@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+      crossorigin="anonymous"
+    />
+  </head>
+  <style>
+    .hero {
+      height: 80vh;
+      background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+        url("https://images.unsplash.com/photo-1707344088547-3cf7cea5ca49?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D")
+          center/cover no-repeat;
+    }
+    .honeymoon-img {
+      width: 200px;
+      height: 200px; /* set a uniform height */
+      object-fit: cover; /* crop instead of stretch */
+      border-radius: 5px;
+    }
+    .boat-img {
+      background-image: url("https://i.pinimg.com/originals/7c/51/e9/7c51e9a61c246703764dc840ca16736f.jpg");
+      height: 50vh;
+      background-position: center;
+      background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+        url("https://i.pinimg.com/originals/7c/51/e9/7c51e9a61c246703764dc840ca16736f.jpg")
+          center/cover no-repeat;
+    }
+    .north-img {
+      width: 200px;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 5px;
+    }
+    .cus-img {
+      width: 300px;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 5px;
+    }
+    .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.6); /* dark transparent */
+      opacity: 0; /* hidden by default */
+      transition: opacity 0.3s ease-in-out;
+    }
+    .position-relative:hover .overlay {
+      opacity: 1; /* show on hover */
+    }
+    .photo-grid {
+      column-count: 3; /* number of columns */
+      column-gap: 1rem; /* space between columns */
+    }
+
+    .photo-grid img {
+      width: 100%;
+      display: block;
+      margin-bottom: 1rem;
+      break-inside: avoid; /* prevents awkward splits */
+    }
+  </style>
+  <body>
+    <div class="hero">
+      <!-- navbar section  -->
+      <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+          <a class="navbar-brand text-white ms-5" href="#"
+            ><h1>Travel Guide</h1></a
+          >
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0 me-5">
+              <li class="nav-item">
+                <a
+                  class="nav-link active text-white"
+                  aria-current="page"
+                  href="#"
+                  >Home</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-white" href="#">Link</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle text-white"
+                  href="#"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  Dropdown
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#">Action</a></li>
+                  <li><a class="dropdown-item" href="#">Another action</a></li>
+                  <li><hr class="dropdown-divider" /></li>
+                  <li>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <!-- hero content  -->
+      <div class="row" style="height: 400px">
+        <div class="col-4"></div>
+        <div class="col-4 d-flex justify-content-center align-items-end">
+          <button
+            class="btn btn-success"
+            data-bs-toggle="modal"
+            data-bs-target="#enquiryModal"
+          >
+            ENQUIRY
+          </button>
+        </div>
+
+        <div
+          class="col-4 text-white text-center d-flex align-items-center lh-1"
+        >
+          <h1>
+            Travel <br />
+            far enough <br />
+            you meet <br />
+            yourself
+          </h1>
+        </div>
+      </div>
+    </div>
+    <div
+      class="modal fade"
+      id="enquiryModal"
+      tabindex="-1"
+      aria-labelledby="enquiryModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="enquiryModalLabel">Enquiry Form</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="mb-3">
+                <label for="name" class="form-label">Your Name</label>
+                <input type="text" class="form-control" id="name" />
+              </div>
+              <div class="mb-3">
+                <label for="email" class="form-label">Your Email</label>
+                <input type="email" class="form-control" id="email" />
+              </div>
+              <div class="mb-3">
+                <label for="package" class="form-label"
+                  >Package Interested</label
+                >
+                <select class="form-select" id="package">
+                  <option selected>Choose...</option>
+                  <option>Kerala Honeymoon</option>
+                  <option>Maldives Honeymoon</option>
+                  <option>Manali Honeymoon</option>
+                  <option>Italy Honeymoon</option>
+                </select>
+              </div>
+              <div class="mb-3">
+                <label for="message" class="form-label">Message</label>
+                <textarea class="form-control" id="message" rows="3"></textarea>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+            <button type="button" class="btn btn-success">
+              Submit Enquiry
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <h2 class="text-center mt-5">HONEYMOON PACKAGES</h2>
+      <div class="container">
+        <div class="row border rounded">
+          <div class="col-3 p-2 text-center">
+            <img
+              class="img-fluid honeymoon-img"
+              src="https://images.unsplash.com/photo-1620720970374-5b7e67e1e610?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+              alt=""
+            />
+            <h3>Kerala honeymoon package</h3>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Error,
+              deserunt.
+            </p>
+            <button class="btn btn-primary">BOOK NOW</button>
+          </div>
+          <div class="col-3 p-2 text-center">
+            <div>
+              <img
+                class="img-fluid honeymoon-img"
+                src="https://images.unsplash.com/photo-1548013146-72479768bada?q=80&w=1176&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                alt=""
+              />
+            </div>
+
+            <h3>Maldives honeymoon package</h3>
+            <p>
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Rerum,
+              tenetur.
+            </p>
+            <button class="btn btn-primary">BOOK NOW</button>
+          </div>
+          <div class="col-3 p-2 text-center">
+            <div>
+              <img
+                class="img-fluid honeymoon-img"
+                src="https://images.unsplash.com/photo-1694011772133-dc4b3ff3f24f?q=80&w=1957&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                alt=""
+              />
+            </div>
+
+            <h3>Manali honeymoon package</h3>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste,
+              recusandae.
+            </p>
+            <button class="btn btn-primary">BOOK NOW</button>
+          </div>
+          <div class="col-3 p-2 text-center">
+            <img
+              class="img-fluid honeymoon-img"
+              src="https://images.unsplash.com/photo-1606298855672-3efb63017be8?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+              alt=""
+            />
+            <h3>Italy honemoon package</h3>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum, qui.
+            </p>
+            <button class="btn btn-primary">BOOK NOW</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <h2 class="text-center mt-5">SPECIAL KERALA FESTIVALTOURS</h2>
+      <div
+        class="boat-img mt-2 d-flex flex-column align-items-center justify-content-center"
+      >
+        <h1 class="text-white">KERALA BOAT RACE</h1>
+        <button class="btn btn-primary">MORE DETAILS</button>
+      </div>
+    </div>
+
+    <div class="mt-4 container">
+      <div class="row">
+        <div class="col-6">
+          <iframe
+            width="560"
+            height="315"
+            src="https://www.youtube.com/embed/xswDNQN4eLk?si=JSBxAOx7FeOYkvvk"
+            title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen
+          ></iframe>
+        </div>
+        <div class="col-6">
+          <div class="photo-grid">
+            <img
+              src="https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?q=80&w=1332&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+              class="img-fluid rounded mb-3"
+              alt=""
+            />
+            <img
+              src="https://images.unsplash.com/photo-1610817201767-793a9130ce07?q=80&w=1062&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+              class="img-fluid rounded mb-3"
+              alt=""
+            />
+            <img
+              src="https://images.unsplash.com/photo-1686543189594-623ed9bf487f?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+              class="img-fluid rounded mb-3"
+              alt=""
+            />
+            <img
+              src="https://images.unsplash.com/photo-1641666017842-f94246ef2961?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+              class="img-fluid rounded mb-3"
+              alt=""
+            />
+            <img
+              src="https://images.unsplash.com/photo-1591414638143-12980893e46f?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+              class="img-fluid rounded mb-3"
+              alt=""
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-5 container">
+      <h2 class="text-center">NORTH INDIAN TOURS</h2>
+
+      <div>
+        <div class="row justify-content-between">
+          <div
+            class="col-3 text-center border border-dark p-2 rounded position-relative"
+            style="width: 200px"
+          >
+            <img
+              class="img-fluid north-img"
+              src="https://images.unsplash.com/photo-1627894484319-b91767570a21?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+              alt=""
+            />
+            <div
+              class="overlay d-flex justify-content-center align-items-center"
+            >
+              <h5 class="text-white">View More</h5>
+            </div>
+          </div>
+          <div
+            class="col-3 border border-dark text-center p-2 rounded position-relative"
+            style="width: 200px"
+          >
+            <img
+              class="img-fluid north-img"
+              src="https://images.unsplash.com/photo-1591914227599-30b05407ed7b?q=80&w=1167&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+              alt=""
+            />
+            <div
+              class="overlay d-flex justify-content-center align-items-center"
+            >
+              <h5 class="text-white">View More</h5>
+            </div>
+          </div>
+          <div
+            class="col-3 border border-dark text-center p-2 rounded position-relative"
+            style="width: 200px"
+          >
+            <img
+              class="img-fluid north-img"
+              src="https://images.unsplash.com/photo-1661096143891-82d6d72700fc?q=80&w=1073&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+              alt=""
+            />
+            <div
+              class="overlay d-flex justify-content-center align-items-center"
+            >
+              <h5 class="text-white">View More</h5>
+            </div>
+          </div>
+          <div
+            class="col-3 border border-dark text-center p-2 rounded position-relative"
+            style="width: 200px"
+          >
+            <img
+              class="img-fluid north-img"
+              src="https://images.unsplash.com/photo-1630681934830-a51136f566e8?q=80&w=1083&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+              alt=""
+            />
+            <div
+              class="overlay d-flex justify-content-center align-items-center"
+            >
+              <h5 class="text-white">View More</h5>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container mt-5 text-center">
+      <h2 class="text-center">OUR CUSTOMERS LOVE</h2>
+      <div class="row mt-4 bg-secondary p-5" style="height: 350px">
+        <div class="col-4">
+          <img
+            class="img-fluid cus-img"
+            src="https://images.unsplash.com/photo-1507537362848-9c7e70b7b5c1?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            alt=""
+          />
+          <h3>Michael and Jenny</h3>
+          <p>
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eligendi,
+            assumenda.
+          </p>
+        </div>
+        <div class="col-4">
+          <img
+            class="img-fluid cus-img"
+            src="https://images.unsplash.com/photo-1520315397185-1ed215491386?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            alt=""
+          />
+          <h3>Rohit and Amrutha</h3>
+          <p>
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+            Voluptatibus, magnam.
+          </p>
+        </div>
+        <div class="col-4">
+          <img
+            class="img-fluid cus-img"
+            src="https://images.unsplash.com/photo-1573496546038-82f9c39f6365?q=80&w=1169&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            alt=""
+          />
+          <h3>James and Anna</h3>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque,
+            reiciendis.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="row bg-secondary mt-3">
+      <div class="col-4 p-5">
+        <h2>ABOUT US</h2>
+        <ul>
+          <li>Our Company</li>
+          <li>Our Management</li>
+          <li>Connections</li>
+          <li>Annual Reports</li>
+          <li>Our Networks</li>
+        </ul>
+      </div>
+      <div class="col-4 p-5">
+        <h2>SOCIAL MEDIA</h2>
+      </div>
+      <div class="col-4"></div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
